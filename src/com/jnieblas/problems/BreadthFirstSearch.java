@@ -2,12 +2,12 @@ package src.com.jnieblas.problems;
 
 import java.util.*;
 
-public class BreadthFirstTraversal {
+public class BreadthFirstSearch {
     private final int vertices; // Number of vertices
     private final LinkedList<Integer>[] adjacencyList; // Adjacency list representation of the graph
 
     @SuppressWarnings("unchecked")
-    public BreadthFirstTraversal(int vertices) {
+    public BreadthFirstSearch(int vertices) {
         this.vertices = vertices;
         adjacencyList = new LinkedList[vertices];
         
@@ -51,7 +51,7 @@ public class BreadthFirstTraversal {
     }
 
     public static void main(String[] args) {
-        BreadthFirstTraversal graph = new BreadthFirstTraversal(7);
+        BreadthFirstSearch graph = new BreadthFirstSearch(7);
 
         // Adding edges to the graph
         graph.addEdge(0, 1);
