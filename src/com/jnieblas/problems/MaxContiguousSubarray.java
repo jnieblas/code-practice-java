@@ -9,19 +9,17 @@ public class MaxContiguousSubarray {
     System.out.println(maxContiguousSubarray(first) + " should be " + "6");
     System.out.println(maxContiguousSubarray(second) + " should be " + "1");
     System.out.println(maxContiguousSubarray(third) + " should be " + "23");
-
-
   }
 
   public static int maxContiguousSubarray(int[] nums) {
     int max = Integer.MIN_VALUE;
     int current_max = 0;
 
-    for (int i = 0; i < nums.length; i++) {
-      int sum = nums[i] + current_max;
+    for (int num : nums) {
+      int sum = num + current_max;
 
       max = Math.max(max, sum);
-      current_max = sum > 0 ? sum : 0;
+      current_max = Math.max(sum, 0);
     }
 
     return max;
