@@ -14,14 +14,17 @@ public class ExcelSheetColumnTitle {
 
         StringBuilder ans = new StringBuilder();
         while (columnNumber > 0) {
-            if (columnNumber % 26 == 0) {
-                ans.append((char) ('A' + 25));
-                // Since we already resolved this 26, we need to subtract it & go to the next one
-                columnNumber -= 26;
-            } else {
-                ans.append((char) ('A' + columnNumber % 26 - 1));
+            int mod = columnNumber % 26;
+
+            if (mod == 0) {
+                mod = 26;
+                columnNumber -= mod; // this inherently happens for EVERY number, since the remainder doesn't persist when dividing
+                // However, it is faster to only manually subtract when mod == 0, since that is an additional operation that
+                // automatically happens in the 25 other cases.
             }
-            columnNumber /= 26;
+
+            ans.append((char) ('A' + mod - 1));
+            columnNumber /= 26; // automatically drops whatever the mod value is, allowing us to trim & find the next char
         }
         return ans.reverse().toString();
     }
